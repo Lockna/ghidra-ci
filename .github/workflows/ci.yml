@@ -97,7 +97,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: NationalSecurityAgency/Ghidra
+          repository: Lockna/Ghidra
           ref: ${{ github.event.inputs.rev }}
           fetch-depth: 0
       - name: Download windows binaries
