@@ -6,7 +6,7 @@ on:
         description: 'Revision of the previous release'
         required: false
       rev:
-        description: 'NationalSecurityAgency/ghidra commit to build'
+        description: 'Lockna/ghidra commit to build'
         required: true
 
 jobs:
