@@ -1,13 +1,6 @@
 name: Ghidra Build
-on:
-  workflow_dispatch:
-    inputs:
-      prevRev:
-        description: 'Revision of the previous release'
-        required: false
-      rev:
-        description: 'Lockna/ghidra commit to build'
-        required: true
+on: [push, pull_request]
+
 
 jobs:
   build-windows:
@@ -15,9 +8,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: Lockna/Ghidra
-          ref: ${{ github.event.inputs.rev }}
+
       - uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -45,9 +36,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: Lockna/Ghidra
-          ref: ${{ github.event.inputs.rev }}
       - uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -70,9 +58,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: Lockna/Ghidra
-          ref: ${{ github.event.inputs.rev }}
       - uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -96,10 +81,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          repository: Lockna/Ghidra
-          ref: ${{ github.event.inputs.rev }}
-          fetch-depth: 0
       - name: Download windows binaries
         uses: actions/download-artifact@v2
         with:
@@ -123,9 +104,6 @@ jobs:
       # TODO: Pre-build GhidraDev
       - name: Checkout ghidra-data
         uses: actions/checkout@v2
-        with:
-          repository: NationalSecurityAgency/ghidra-data
-          path: 'ghidra-data'
       - name: Copy ghidra-data files into the appropriate directories
         run: cp -r ghidra-data/FunctionID/* Ghidra/Features/FunctionID/data
       - name: Build ghidra, create a cross-platform distribution
@@ -152,8 +130,6 @@ jobs:
           echo ::set-output name=dist::$(ls build/dist)
           echo ::set-output name=rev::$(git rev-parse --short HEAD)
       - uses: actions/checkout@v2
-        with:
-          path: ghidra-ci-roblabla
       - name: Generate CHANGELOG.md
         run: |
           cd ghidra-ci-roblabla
