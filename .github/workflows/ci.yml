@@ -8,7 +8,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-
+        with:
+          repository: Lockna/Ghidra
       - uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -36,6 +37,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          repository: Lockna/Ghidra
       - uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -58,6 +61,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          repository: Lockna/Ghidra
       - uses: actions/setup-java@v1
         with:
           java-version: 11
