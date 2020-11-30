@@ -124,7 +124,7 @@ jobs:
       - name: Checkout ghidra-data
         uses: actions/checkout@v2
         with:
-          repository: Lockna/ghidra-data
+          repository: NationalSecurityAgency/ghidra-data
           path: 'ghidra-data'
       - name: Copy ghidra-data files into the appropriate directories
         run: cp -r ghidra-data/FunctionID/* Ghidra/Features/FunctionID/data
