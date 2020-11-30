@@ -111,6 +111,9 @@ jobs:
       # TODO: Pre-build GhidraDev
       - name: Checkout ghidra-data
         uses: actions/checkout@v2
+        with:
+          repository: NationalSecurityAgency/ghidra-data
+          path: 'ghidra-data'
       - name: Copy ghidra-data files into the appropriate directories
         run: cp -r ghidra-data/FunctionID/* Ghidra/Features/FunctionID/data
       - name: Build ghidra, create a cross-platform distribution
@@ -137,6 +140,8 @@ jobs:
           echo ::set-output name=dist::$(ls build/dist)
           echo ::set-output name=rev::$(git rev-parse --short HEAD)
       - uses: actions/checkout@v2
+        with:
+          path: ghidra-ci-roblabla
       - name: Generate CHANGELOG.md
         run: |
           cd ghidra-ci-roblabla
