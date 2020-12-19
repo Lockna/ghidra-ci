@@ -35,6 +35,6 @@ jobs:
         uses: benc-uk/workflow-dispatch@v1.1
         with:
           workflow: "Ghidra Build"
-          repo: Lockna/ghidra  
+          repo: Lockna/ghidra-ci
           token: ${{secrets.PAT_TOKEN}}
           inputs: '{ "rev": "${{steps.check.outputs.rev}}", "prevRev": "${{steps.check.outputs.lastrev}}" }'
